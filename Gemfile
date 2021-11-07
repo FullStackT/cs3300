@@ -72,3 +72,6 @@ gem 'mini_racer'
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
 end
+
+# adding simplecov
+gem 'simplecov', require: false
