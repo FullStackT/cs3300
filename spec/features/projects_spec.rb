@@ -4,6 +4,9 @@ RSpec.feature "Projects", type: :feature do
   #tests to see if we can create a new project 
   context "Create new project" do
     before(:each) do
+      # Logging in as FactoryBot user
+      user = FactoryBot.create(:user)
+      login_as(user)
       visit new_project_path
       within("form") do
         fill_in "Title", with: "Test title"
@@ -54,6 +57,9 @@ RSpec.feature "Projects", type: :feature do
     #check to see if we get a success message when we click "Destroy" button
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
+      # Logging in with FactoryBot user
+      user = FactoryBot.create(:user)
+      login_as(user)
       visit projects_path
       click_link "Destroy"
       expect(page).to have_content("Project was successfully destroyed")
