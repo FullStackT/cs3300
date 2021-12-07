@@ -3,7 +3,7 @@
 <h1>Projects</h1>
 <p>Check out my projects!</p>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -17,10 +17,22 @@
       <tr>
         <td><%= project.title %></td>
         <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
+        <td>
+          <div>
+            <%= link_to 'Show', project, :class => "btn btn-success" %>
+          </div>
+        </td>
         <% if user_signed_in? %>
-          <td><%= link_to 'Edit', edit_project_path(project) %></td>
-          <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <div>
+              <%= link_to 'Edit', edit_project_path(project), :class => "btn btn-secondary" %>
+            </div>
+          </td>
+          <td>
+            <div>
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+            </div>
+          </td>
         <% end %>
       </tr>
     <% end %>
@@ -30,5 +42,5 @@
 <br>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Project', new_project_path %>
+  <a class="btn btn-primary btn-lg" href="/projects/new" role="button">+ New Project</a>
 <% end %>
