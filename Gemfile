@@ -9,6 +9,12 @@ gem 'rails', '~> 5.2.6'
 #adding 'devise,' which is a flexible authentication solution for Rails apps
 gem 'devise'
 
+#adding Bootstrap dependencies for styling
+gem 'bootstrap', '~> 4.0.0'
+gem 'sprockets-rails', '>= 2.3.2'
+gem 'jquery-rails'
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
