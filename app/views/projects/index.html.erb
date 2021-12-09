@@ -1,9 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Projects</h1>
-<p>Check out my projects!</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">My Projects</h1>
+    <hr class="my-4">
+    <p class="lead">I am a software developer and I'm also working on my BS in Computer
+    Science.<br>I love doing data analysis as well as machine learning. Please browse my projects
+    to<br>see where I have experience and what projects I'm challenging myself with!</p>
+  </div>
+</div>
 
-<table>
+<!--
+<h1>My Projects</h1>
+<p>I work in software development and I'm also working on my BS in Computer
+Science.<br>I love doing data analysis as well as machine learning. Please browse my projects
+to<br>see where I have experience and what projects I'm challenging myself with!</p>
+-->
+
+<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th>Title</th>
@@ -17,9 +31,23 @@
       <tr>
         <td><%= project.title %></td>
         <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div>
+            <%= link_to 'Show', project, :class => "btn btn-success" %>
+          </div>
+        </td>
+        <% if user_signed_in? %>
+          <td>
+            <div>
+              <%= link_to 'Edit', edit_project_path(project), :class => "btn btn-secondary" %>
+            </div>
+          </td>
+          <td>
+            <div>
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+            </div>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +55,6 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<% if user_signed_in? %>
+  <a class="btn btn-primary btn-lg" href="/projects/new" role="button">+ New Project</a>
+<% end %>
